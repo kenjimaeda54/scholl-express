@@ -1,9 +1,9 @@
-class HomeController {
+class Home {
   index(req, res, next) {
     res.send({
-      title: "API REST EXPRESS",
+      title: "Api rest",
     });
   }
 }
 
-export default new HomeController();
+export default new Home();
