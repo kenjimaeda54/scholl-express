@@ -7,6 +7,10 @@ const routes = new Router();
 //entao no final a rota vai ser /users
 //se querer dar um put eu faria aqui apenas /:id
 routes.post("/", userController.store);
+routes.get("/", userController.index);
+routes.get("/:id", userController.show);
+routes.put("/:id", userController.update);
+routes.delete("/:id", userController.destroy);
 
 export default routes;
 

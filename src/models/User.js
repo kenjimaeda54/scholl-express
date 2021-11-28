@@ -49,6 +49,7 @@ export default class User extends Model {
     );
     //estou adicionado um hooks para fazer hash da senha antes de salvar no banco
     this.addHook("beforeSave", async (user) => {
+      if (!user.password) return;
       user.password_hash = await bcrypt.hash(user.password, 8);
     });
     return this;
