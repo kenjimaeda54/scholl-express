@@ -1,0 +1,14 @@
+const { resolve } = require("path");
+
+// modo correto de escrever sequelize e assim
+//usei caminho absoluto para mostrar os caminhos
+
+module.exports = {
+  //cuidado quando e um arquivo mesmo preciso da extensao
+  //database.js
+  //src,config sao tudo pasta
+  config: resolve(__dirname, "src", "config", "database.js"),
+  "models-path": resolve(__dirname, "src", "models"),
+  "migrations-path": resolve(__dirname, "src", "database", "migrations"),
+  "seeders-path": resolve(__dirname, "src", "database", "seeds"),
+};
