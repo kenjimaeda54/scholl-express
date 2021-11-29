@@ -6,17 +6,29 @@ import { extname, resolve } from "path";
 const randomNumber = () => Math.floor(Math.random() * 10000 + 10000);
 
 export default {
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype !== "image/jpeg" || file.mimetype !== "image/png") {
+      return cb(
+        new multer.MulterError("Arquivo precisa ser png ou jpg"),
+        false
+      );
+    }
+    return cb(null, true);
+  },
   storage: multer.diskStorage({
-    destination: (_, file, cb) => {
+    destination: (req, file, cab) => {
       //primeiro parametro e o erro,
       //segundo parametro e o caminho absoluto
-      cb(null, resolve(__dirname, "..", "..", "uploads"));
+      cab(null, resolve(__dirname, "..", "..", "uploads"));
     },
-    filename: (__, file, cb) => {
+    filename: (req, file, cab) => {
       //file.originalname é o nome original do arquivo
       //construo uma string com o nome do arquivo e o numero aleatorio
       //assim garanto que o nome do arquivo seja unico
-      cb(null, `${Date.now()}__${randomNumber()}${extname(file.originalname)}`);
+      cab(
+        null,
+        `${Date.now()}$_${randomNumber()}${extname(file.originalname)}`
+      );
     },
   }),
 };
