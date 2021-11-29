@@ -4,14 +4,22 @@ import LoginRequired from "../middleware/LoginRequired";
 
 const routes = new Router();
 
+//as rotas show e index nao fazem sentido em cenario real,
+//nao faz sentido eu listar todos usuarios ou poder ver um usuario especifico
+//entao eu nao quero que eu tenha uma rota /users/:id
+// routes.get("/", userController.index);
+// routes.get("/:id", userController.show);
+
 //se voce olhar no arquivo app a rota la e /users,
 //entao no final a rota vai ser /users
 //se querer dar um put eu faria aqui apenas /:id
+//nao faz sentido eu ter rota /users/:id
+//porque qualquer usuario pode editar outro usuario
+//entao vou usar o id do proprio usuario na requisicao para editar
+//usando o middleware LoginRequired e seu token
 routes.post("/", userController.store);
-routes.get("/", LoginRequired, userController.index);
-routes.get("/:id", userController.show);
-routes.put("/:id", userController.update);
-routes.delete("/:id", userController.destroy);
+routes.put("/", LoginRequired, userController.update);
+routes.delete("/", LoginRequired, userController.destroy);
 
 export default routes;
 
