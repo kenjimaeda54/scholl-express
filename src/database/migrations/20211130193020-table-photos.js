@@ -20,9 +20,13 @@ module.exports = {
       students_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        references: { model: "students", key: "id" },
-        onUpdate: "CASCADE",
         onDelete: "SET NULL",
+        //quando campo do id atualizar vai atualizar tambem aqui
+        onUpdate: "CASCADE",
+        references: {
+          model: "students",
+          key: "id",
+        },
       },
       created_at: {
         type: Sequelize.DATE,

@@ -10,5 +10,6 @@ const connection = new Sequelize(databaseConfig);
 
 models.forEach((model) => model.init(connection));
 models.forEach(
+  //modeles sao meus model [Student, User, Photo]
   (model) => model.associate && model.associate(connection.models)
 );
