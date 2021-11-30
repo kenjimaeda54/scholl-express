@@ -9,7 +9,7 @@ Criar aplicação para cadastrar alunos,login. Cada estudante pode fazer upload 
 - Usei a google cloud com docker para gerar um servidor de banco de dados online.
 - Sequelize trabalha no conceito de migration quando precisamos lidar diretamente com o banco.
 - Para fazer upload de fotos foi usado o multer.
-- Com extname consigo pegar o tipo  extensão do arquivo
+- Com extname consigo pegar o tipo  extensão do arquivo.
 
 
 ```javascript
