@@ -1,14 +1,32 @@
+import Photo from "../models/Photo";
 import Students from "../models/Student";
 
 class StudentController {
   async index(req, res, next) {
     try {
-      const students = await Students.findAll();
-      if (students.length > 0) {
-        const { email, name, secondName, height, weight, old } = students;
-        return res.send(students);
-      }
-      return res.send({ registros: 0 });
+      const students = await Students.findAll({
+        attributes: [
+          "id",
+          "email",
+          "name",
+          "secondName",
+          "height",
+          "weight",
+          "old",
+        ],
+        //id e o campo que vou ordenar
+        //desc é para ordenar de forma decrescente
+        //asc é para ordenar de forma crescente
+        order: [
+          ["id", "DESC"],
+          [Photo, "id", "DESC"],
+        ],
+        include: {
+          model: Photo,
+          attributes: ["file_name"],
+        },
+      });
+      return res.send(students);
     } catch (e) {
       console.log(e);
       return res.status(400).send({
