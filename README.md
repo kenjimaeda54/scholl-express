@@ -1,5 +1,5 @@
 # API SCHOLL EXPRESS
-Api feita em express
+Api feita em express.
 
 ## Motivacao
 Criar aplicação para cadastrar alunos,login. Cada estudante pode fazer upload de suas fotos.
