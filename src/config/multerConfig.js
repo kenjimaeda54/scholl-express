@@ -7,13 +7,13 @@ const randomNumber = () => Math.floor(Math.random() * 10000 + 10000);
 
 export default {
   fileFilter: (req, file, cb) => {
-    if (file.mimetype !== "image/jpeg" || file.mimetype !== "image/png") {
-      return cb(
-        new multer.MulterError("Arquivo precisa ser png ou jpg"),
-        false
-      );
+    if (file.mimetype === "image/png" || file.mimetype === "image/jpeg") {
+      return cb(null, true);
     }
-    return cb(null, true);
+    return cb(
+      new multer.MulterError("Arquivo precisa ser do tipo png ou jpeg"),
+      false
+    );
   },
   storage: multer.diskStorage({
     destination: (req, file, cab) => {
